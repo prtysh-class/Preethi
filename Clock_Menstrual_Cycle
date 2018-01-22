@@ -1,0 +1,75 @@
+
+float currentTime;
+float value =28;
+float x= map(value, 0, TWO_PI, 0, 28*(TWO_PI/28));
+float k;
+
+void setup()
+{
+  frameRate(24);
+  size(640, 480);
+  currentTime=millis();
+ // arc(width/2, height/2, 50, 50, 0, 7*(x));
+}
+
+void draw()
+{
+
+  background(0);
+
+  for (float k=0; k<28; k++)
+  {
+    if (k<8) {
+      noFill();
+      stroke(255);
+      pushMatrix();
+      arc(width/2, height/2, 50, 50, 0, (k*(TWO_PI/x))*(currentTime%3600)/3600);
+      popMatrix();
+      currentTime=millis();
+    }
+
+    if (k>7 && k<15) {
+
+
+      pushMatrix();  
+      noStroke();
+      fill(100, 25, 89);
+      arc(width/2, height/2, 50, 50, (7*(TWO_PI/x)), (k*(TWO_PI/x))*(currentTime%3600)/3600);
+      popMatrix();
+      currentTime=millis();
+    }
+
+    if (k>14 && k<26) {
+
+      pushMatrix();   
+      fill(200, 25, 89);
+      arc(width/2, height/2, 50, 50, (14*(TWO_PI/x)), (k*(TWO_PI/x))*(currentTime%3600)/3600);
+      popMatrix();
+      currentTime=millis();
+    }
+
+    //if(k>25)
+    //{
+    //      pushMatrix();   
+    //      fill(255,255,0);
+    //      arc(width/2, height/2, 50, 50, (k*(TWO_PI/x)),x*(currentTime%3600)/3600);
+    //      popMatrix();
+    //      currentTime=millis();
+    //     
+    //}
+    
+    if(mousePressed==true)
+  {
+    k=k+1;
+  }
+  
+  }
+}
+
+//void draw()
+//{
+//  if(mousePressed==true)
+//  {
+//    clock();
+//  }
+//}
