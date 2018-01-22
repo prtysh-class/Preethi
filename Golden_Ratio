@@ -1,0 +1,39 @@
+void setup()
+{
+  background(255);
+  size(700,700);
+  frameRate(3);
+}
+void draw()
+{
+   
+  float a=400;
+  float b=400*1.618;  
+  stroke(random(0,255));
+  
+  fill(random(255),random(255),random(255));
+  rect(0,0,b,a);
+ 
+  fill(random(255),random(255),random(255));
+  rect(400,0,(b-a),a);
+  
+  fill(random(255),random(255),random(255));
+  rect(400,0,b-a,b-a);
+  
+  fill(random(255),random(255),random(255));
+  rect(a,(b-a),a-(b-a),a-(b-a));
+
+  fill(random(255),random(255),random(255));
+  float x=(b-a)-(a-(b-a)); //
+  rect(a+(a-(b-a)),(b-a),x,x);
+  
+  fill(random(255),random(255),random(255));
+  rect(a+(a-(b-a)),(b-a)+x,a-(b-a)-x,a-(b-a)-x);
+  
+  fill(random(255),random(255),random(255));
+  float y=a-(b-a)-x;// width of previous rectangle
+  float c=a+(a-(b-a)); //x coordinate of previous rectangle
+  rect(c+y,(b-a)+x,x-y,x-y);
+  
+  
+}
