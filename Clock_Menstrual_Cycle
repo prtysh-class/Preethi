@@ -57,19 +57,8 @@ void draw()
     //      currentTime=millis();
     //     
     //}
-    
-    if(mousePressed==true)
-  {
-    k=k+1;
-  }
+ 
   
   }
 }
 
-//void draw()
-//{
-//  if(mousePressed==true)
-//  {
-//    clock();
-//  }
-//}
