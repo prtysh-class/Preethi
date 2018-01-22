@@ -1,64 +1,52 @@
-
 float currentTime;
-float value =28;
-float x= map(value, 0, TWO_PI, 0, 28*(TWO_PI/28));
+float totalDays = 28;
+float stageOne = 7;
+float stageTwo = 15;
+float stageThree = 26;
 float k;
 
 void setup()
 {
-  frameRate(24);
+  frameRate(2);
   size(640, 480);
   currentTime=millis();
- // arc(width/2, height/2, 50, 50, 0, 7*(x));
 }
 
 void draw()
 {
-
   background(0);
-
-  for (float k=0; k<28; k++)
-  {
-    if (k<8) {
-      noFill();
-      stroke(255);
-      pushMatrix();
-      arc(width/2, height/2, 50, 50, 0, (k*(TWO_PI/x))*(currentTime%3600)/3600);
-      popMatrix();
-      currentTime=millis();
+  translate(width/2,height/2);
+  if(k<=stageOne){
+    //draw one arc
+    
+    arc(0,0,50,50,0,(k/stageOne)*TWO_PI*stageOne/totalDays);
     }
-
-    if (k>7 && k<15) {
-
-
-      pushMatrix();  
-      noStroke();
-      fill(100, 25, 89);
-      arc(width/2, height/2, 50, 50, (7*(TWO_PI/x)), (k*(TWO_PI/x))*(currentTime%3600)/3600);
-      popMatrix();
-      currentTime=millis();
+  if(k>stageOne && k<=stageTwo){
+    //draw second arc
+    pushMatrix();
+    rotate(TWO_PI*stageOne/totalDays);
+    arc(0,0,100,100,0, ((k-stageOne)/(stageTwo-stageOne))*TWO_PI*(stageTwo-stageOne)/totalDays);
+    popMatrix();
     }
-
-    if (k>14 && k<26) {
-
-      pushMatrix();   
-      fill(200, 25, 89);
-      arc(width/2, height/2, 50, 50, (14*(TWO_PI/x)), (k*(TWO_PI/x))*(currentTime%3600)/3600);
-      popMatrix();
-      currentTime=millis();
+  if(k>stageTwo && k<=stageThree){
+    //draw third arc
+    pushMatrix();
+    rotate(TWO_PI*stageTwo/totalDays);
+    arc(0,0,150,150,0,((k-stageTwo)/(stageThree-stageTwo))*TWO_PI*(stageThree-stageTwo)/totalDays);
+    popMatrix();
     }
-
-    //if(k>25)
-    //{
-    //      pushMatrix();   
-    //      fill(255,255,0);
-    //      arc(width/2, height/2, 50, 50, (k*(TWO_PI/x)),x*(currentTime%3600)/3600);
-    //      popMatrix();
-    //      currentTime=millis();
-    //     
-    //}
- 
-  
-  }
+  if(k>stageThree){
+    //draw third arc
+    pushMatrix();
+    rotate(TWO_PI*stageThree/totalDays);
+    arc(0,0,200,200,0,((k-stageThree)/(totalDays-stageThree))*TWO_PI*(totalDays-stageThree)/totalDays);
+    popMatrix();
+    }
+  k = k + 1;
 }
 
+void mouseClicked() {
+  if (k > totalDays) {
+    k = 0;
+  } 
+}
